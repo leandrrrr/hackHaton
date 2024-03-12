@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+ .bg-fluorescent-green {
+     background-color: #00FF00; /* Vert fluo en format hexadécimal */
+     padding: 16px;
+     border-radius: 8px;
+     text-align: center;
+     color: white;
+ }
+
