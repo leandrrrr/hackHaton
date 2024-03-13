@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\delis; // Assure-toi d'importer ton modèle Delis
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,7 +11,10 @@ class UserController extends Controller
 {
     public function create()
     {
-        return view('articles.create');
+        $delisData = Delis::all(); // Récupère toutes les données de la table "delis"
+
+        // Maintenant, envoie ces données à ta vue
+        return view('articles.create')->with('delisData', $delisData);
     }
     public function store(Request $request)
     {
@@ -41,15 +45,27 @@ class UserController extends Controller
     }
     public function index()
     {
-        // On récupère l'utilisateur connecté.
+        // Récupère l'utilisateur connecté
         $user = Auth::user();
 
+        // Maintenant, récupère également les données de la table "delis"
+        $delisData = Delis::all();
+
+        // Compte le nombre d'articles, tu n'as pas encore implémenté cette partie, alors je te laisse le faire
         $articles = 0;
 
-        // On retourne la vue.
+        // Retourne la vue avec les données nécessaires
         return view('dashboard', [
-            'articles' => $articles
+            'articles' => $articles,
+            'delisData' => $delisData // Passe les données de la table "delis" à la vue
         ]);
+    }
+    public function dashboard()
+    {
+        $delisData = Delis::all(); // Récupère toutes les données de la table "delis"
+
+        // Envoie ces données à ta vue "dashboard"
+        return view('dashboard', compact('delisData'));
     }
     public function edit(Article $article)
     {

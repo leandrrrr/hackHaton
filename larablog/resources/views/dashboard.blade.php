@@ -200,4 +200,9 @@
 
         </div>
     </div>
+    @foreach($delisData as $delis)
+        <p>{{ $delis->id }}</p> {{-- Remplace "nom" par le nom de la colonne que tu veux afficher --}}
+        {{-- Ajoute d'autres données selon tes besoins --}}
+    @endforeach
+
 </x-app-layout>

@@ -32,6 +32,7 @@
             @endif
 
             <h1 style="font-size: 70px ">INSÉCURITÉ . COM</h1>
+
         </div>
     </body>
 </html>
