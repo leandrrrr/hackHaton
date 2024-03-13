@@ -44,7 +44,7 @@ class UserController extends Controller
         // On récupère l'utilisateur connecté.
         $user = Auth::user();
 
-        $articles = Article::where('user_id', $user->id)->get();
+        $articles = 0;
 
         // On retourne la vue.
         return view('dashboard', [
@@ -82,7 +82,7 @@ class UserController extends Controller
     public function update(Request $request, Article $article)
     {
         // On vérifie que l'utilisateur est bien le créateur de l'article
-        if ($article->user_id !== Auth::user()->id) {
+        if ($article->id !== Auth::user()->id) {
             abort(403);
         }
 
