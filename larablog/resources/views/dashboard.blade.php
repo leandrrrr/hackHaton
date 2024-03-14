@@ -67,21 +67,114 @@
 
 
 
+            @php
+
+                $decodedData = json_decode($delisData, true);
+
+                // Filtrer les données pour obtenir celles de l'année en cours
+                $currentYearData = array_filter($decodedData, function($entry) {
+                    return date('Y', strtotime($entry['dateMois'])) == date('Y');
+                });
+
+                // Initialiser un tableau pour stocker les totaux de nbDelit par typeDeDelit
+                $totalsByType = [];
+
+                foreach($currentYearData as $entry) {
+                    $typeDeDelit = $entry['typeDeDelit'];
+                    $nbDelit = $entry['nbDelit'];
+
+                    if(!isset($totalsByType[$typeDeDelit])) {
+                        $totalsByType[$typeDeDelit] = 0;
+                    }
+
+                    $totalsByType[$typeDeDelit] += $nbDelit;
+                }
+
+                // Trier les totaux par ordre décroissant
+                arsort($totalsByType);
+
+                // Prendre les 5 premiers éléments
+                $top5 = array_slice($totalsByType, 0, 5, true);
+            @endphp
+            @php
+//nbdelisevolution
+                $decodedData = json_decode($delisData, true);
 
 
+    $resultNbDelisTt = [];
+
+    foreach($decodedData as $entry) {
+        $year = date('Y', strtotime($entry['dateMois']));
+        $nbDelit = $entry['nbDelit'];
+
+        if(!isset($resultNbDelisTt[$year])) {
+            $resultNbDelisTt[$year] = 0;
+        }
+
+        $resultNbDelisTt[$year] += $nbDelit;
+    }
+
+    // Trier les années de la plus petite à la plus grande
+    ksort($resultNbDelisTt);
+            @endphp
+            @php
+
+                $decodedData = json_decode($delisData, true);
+
+                $result = [];
+
+                foreach($decodedData as $entry) {
+                    $department = $entry['departement'];
+                    $nbDelit = $entry['nbDelit'];
+
+                    if(!isset($result[$department])) {
+                        $result[$department] = 0;
+                    }
+
+                    $result[$department] += $nbDelit;
+                }
+
+                // Trier les départements par le nombre total de délits de manière décroissante
+                arsort($result);
+
+                // Sélectionner les cinq premiers départements
+                $topDepartments = array_slice($result, 0, 5, true);
+            @endphp
 
             <script>
                 //Les departements les plus dangeureux---------------------------------------------
 
 
                 document.addEventListener('DOMContentLoaded', function() {
-                    const labelsdepartementDanger = ['Red', 'Orange', 'Yellow', 'Green', 'Blue'];
+                    <?php
+                    echo "const labelsdepartementDanger = [";
+                    $counter = 0;
+                    foreach ($topDepartments as $key => $value) {
+                        echo "'$key'";
+                        $counter++;
+                        if ($counter < count($topDepartments)) {
+                            echo ",";
+                        }
+                    }
+                    echo "];";
+                    ?>
                     const datadepartementDanger = {
                         labels: labelsdepartementDanger,
                         datasets: [{
                             label: 'Dataset 1',
-                            data: [10, 20, 30, 40, 50], // Exemple de données, remplacez-les par les vôtres
-                            backgroundColor: [
+                            <?php
+                            echo "data: [";
+                            $counter = 0;
+                            foreach ($topDepartments as $key => $value) {
+                                echo "$value";
+                                $counter++;
+                                if ($counter < count($topDepartments)) {
+                                    echo ",";
+                                }
+                            }
+                            echo "],";
+                            ?>
+                    backgroundColor: [
                                 'rgba(255, 99, 132, 0.5)',
                                 'rgba(255, 159, 64, 0.5)',
                                 'rgba(255, 205, 86, 0.5)',
@@ -119,11 +212,33 @@
 
                 // Evolution delis -------------------------------------------------------
                 const dataEvolutionDelis = {
-                    labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6'],
+                    <?php
+                    echo "labels: [";
+                    $counter = 0;
+                    foreach ($resultNbDelisTt as $key => $value) {
+                        echo "$key";
+                        $counter++;
+                        if ($counter < count($top5)) {
+                            echo ",";
+                        }
+                    }
+                    echo "],";
+                    ?>
                     datasets: [
                         {
-                            label: 'Dataset',
-                            data: [25000, 15000, 30000, 40000, 50000, 30000], // Donnees de test
+                            label: 'Delis',
+                            <?php
+                            echo "data: [";
+                            $counter = 0;
+                            foreach ($resultNbDelisTt as $key => $value) {
+                                echo "$value";
+                                $counter++;
+                                if ($counter < count($top5)) {
+                                    echo ",";
+                                }
+                            }
+                            echo "],";
+                            ?>
                             borderColor: 'red', // Utilisez une couleur directe ou une fonction Utils appropriee
                             backgroundColor: 'rgba(255, 0, 0, 0.5)', // Couleur avec transparence
                             pointStyle: 'circle',
@@ -132,10 +247,6 @@
                         }
                     ]
                 };
-
-
-
-
                 const configEvolutionDelis = {
                     type: 'line',
                     data: dataEvolutionDelis, // Utilisez dataEvolutionDelis plutot que data
@@ -161,16 +272,34 @@
 
                 // le dognut -------------------------------------------------------
                 const data = {
-                    labels: [
-                        'Red',
-                        'Blue',
-                        'Yellow',
-                        'Blue2',
-                        'Yellow2'
-                    ],
+
+                    <?php
+                    echo "labels: [";
+                    $counter = 0;
+                    foreach ($top5 as $key => $value) {
+                        echo "$key";
+                        $counter++;
+                        if ($counter < count($top5)) {
+                            echo ",";
+                        }
+                    }
+                    echo "],";
+                    ?>
                     datasets: [{
                         label: 'My First Dataset',
-                        data: [30000, 5000, 10000,8000,7800],
+                        <?php
+                        echo "data: [";
+                        $counter = 0;
+                        foreach ($top5 as $key => $value) {
+                            echo "$value";
+                            $counter++;
+                            if ($counter < count($top5)) {
+                                echo ",";
+                            }
+                        }
+                        echo "],";
+                        ?>
+
                         backgroundColor: [
                             'rgb(255, 99, 132)',
                             'rgb(54, 162, 235)',
@@ -196,13 +325,5 @@
                 // Cree le graphique avec Chart.js
                 const monGraphique = new Chart(monCanvas, config);
             </script>
-
-
-        </div>
-    </div>
-    @foreach($delisData as $delis)
-        <p>{{ $delis->id }}</p> {{-- Remplace "nom" par le nom de la colonne que tu veux afficher --}}
-        {{-- Ajoute d'autres données selon tes besoins --}}
-    @endforeach
 
 </x-app-layout>
