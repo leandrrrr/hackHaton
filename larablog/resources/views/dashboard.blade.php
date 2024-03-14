@@ -317,10 +317,8 @@
                     data: data,
                 };
 
-
                 // Selectionne le canvas par son ID
                 const monCanvas = document.getElementById('monDoughnut');
-
 
                 // Cree le graphique avec Chart.js
                 const monGraphique = new Chart(monCanvas, config);

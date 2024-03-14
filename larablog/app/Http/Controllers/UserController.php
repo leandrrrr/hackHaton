@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function afficherDepartement($nom)
+    {
+        // Récupère les délits pour le département spécifié
+        $delits = delis::where('departement', $nom)->get();
+
+        // Passe les données à la vue
+        return view('departement', ['nom' => $nom, 'delits' => $delits]);
+    }
     public function create()
     {
         $delisData = Delis::all(); // Récupère toutes les données de la table "delis"

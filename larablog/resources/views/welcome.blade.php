@@ -31,7 +31,20 @@
                 </div>
             @endif
 
-            <h1 style="font-size: 70px ">INSÉCURITÉ . COM</h1>
+            <h1 style="font-size: 70px ">INSÉCURITÉ . COM</h1><h1 style="font-size: 55px ">|</h1>
+
+            <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+DEPARTEMENT LE PLUS SUR DE FRANCE :
+                <br>
+            49
+
 
         </div>
     </body>

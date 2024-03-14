@@ -40,7 +40,9 @@
                     // Ajouter un événement de clic à chaque département
                     onEachFeature: function (feature, layer) {
                         layer.on('click', function (e) {
-                            alert('Département: ' + feature.properties.code);
+                            var codeDepartement = feature.properties.code;
+                            // Redirection vers une nouvelle URL avec le code du département
+                            window.location.href = '/departement/' + codeDepartement;
                         });
                     }
                 }).addTo(map);
