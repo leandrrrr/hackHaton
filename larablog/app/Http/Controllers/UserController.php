@@ -12,10 +12,10 @@ class UserController extends Controller
     public function afficherDepartement($nom)
     {
         // Récupère les délits pour le département spécifié
-        $delits = delis::where('departement', $nom)->get();
+        $delitsData = delis::where('departement', $nom)->get();
 
         // Passe les données à la vue
-        return view('departement', ['nom' => $nom, 'delits' => $delits]);
+        return view('departement', ['nom' => $nom, 'delisData' => $delitsData]);
     }
     public function create()
     {
