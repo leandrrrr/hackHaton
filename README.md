@@ -16,7 +16,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 1. Clonez ce dépôt sur votre machine locale :
 
    ```bash
-   git clone https://github.com/votre-utilisateur/nom-du-projet.git
+   [git clone https://github.com/votre-utilisateur/nom-du-projet.git](https://github.com/leandrrrr/hackHaton.git)
 
     Installez les dépendances PHP via Composer :
 
