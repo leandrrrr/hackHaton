@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Article|null $article
  *
  * @package App\Models
+ *
  */
 class Comment extends Model
 {
