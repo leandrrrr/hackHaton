@@ -2,6 +2,8 @@
 
 Bienvenue sur le projet Hackathon du BTS SIO. Ce projet utilise le framework Laravel en suivant le modèle MVC pour créer un site web interactif qui exploite les données Open Data du gouvernement relatives aux délits par département. L'objectif principal est de fournir des statistiques visuelles sur ces délits en utilisant la librairie Chart.js pour les graphiques et la librairie Leaflet.js pour la sélection des départements.
 
+BDD : http://192.168.10.16
+
 ## Prérequis
 
 Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
@@ -16,7 +18,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 1. Clonez ce dépôt sur votre machine locale :
 
    ```bash
-   git clone https://github.com/votre-utilisateur/nom-du-projet.git
+   [git clone (https://github.com/leandrrrr/hackHaton.git)
 
     Installez les dépendances PHP via Composer :
 
@@ -26,38 +28,38 @@ composer install
 
 Installez les dépendances JavaScript via NPM :
 
-bash
+```bash
 
-npm install
-
+   npm install
+   bash
 Renommez le fichier .env.example en .env et configurez les informations de base de données ainsi que d'autres variables d'environnement selon vos besoins.
 
 Générez une clé d'application Laravel :
 
-bash
+```bash
 
-php artisan key:generate
-
+   php artisan key:generate
+   bash
 Exécutez les migrations pour créer les tables de base de données :
 
-bash
+```bash
 
-php artisan migrate
-
+   php artisan migrate
+   bash
 Compilez les ressources frontales :
 
-bash
+```bash
 
     npm run dev
-
+   bash
 Utilisation
 
 Une fois que vous avez terminé l'installation, vous pouvez démarrer le serveur de développement en utilisant la commande :
 
-bash
+```bash
 
-php artisan serve
-
+   php artisan serve
+   bash
 Cela démarrera un serveur local à l'adresse http://localhost:8000.
 Fonctionnalités
 
@@ -70,4 +72,4 @@ Contribution
 Si vous souhaitez contribuer à ce projet, n'hésitez pas à soumettre des pull requests ou à ouvrir des issues pour signaler des problèmes ou suggérer des améliorations.
 Auteurs
 
-Ce projet a été développé dans le cadre du BTS SIO Hackathon par Votre Nom et Autre Auteur.
+Ce projet a été développé dans le cadre du BTS SIO Hackathon par Leandre Mascher.
