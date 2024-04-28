@@ -26,20 +26,20 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-    Route::get('/articles/create', [UserController::class, 'create'])->name('articles.create');
-    Route::post('/articles/store', [UserController::class, 'store'])->name('articles.store');
+    Route::get('/search/carte', [UserController::class, 'create'])->name('search.create');
+    Route::post('/search/store', [UserController::class, 'store'])->name('search.store');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/articles/create', [UserController::class, 'create'])->name('articles.create');
-    Route::post('/articles/store', [UserController::class, 'store'])->name('articles.store');
+    Route::get('/search/carte', [UserController::class, 'carte'])->name('search.carte');
+    Route::post('/search/store', [UserController::class, 'store'])->name('search.store');
     Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
-    Route::get('/articles/{article}/edit', [UserController::class, 'edit'])->name('articles.edit');
-    Route::post('/articles/{article}/update', [UserController::class, 'update'])->name('articles.update');
-    Route::get('/articles/{article}/remove', [UserController::class, 'remove'])->name('articles.remove');
+    Route::get('/search/{article}/edit', [UserController::class, 'edit'])->name('search.edit');
+    Route::post('/search/{article}/update', [UserController::class, 'update'])->name('search.update');
+    Route::get('/search/{article}/remove', [UserController::class, 'remove'])->name('search.remove');
     Route::get('/departement/{departement}', [UserController::class, 'afficherDepartement'])->name('departement');
 
 

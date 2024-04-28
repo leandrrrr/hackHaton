@@ -16,7 +16,7 @@
                         Home
                     </x-nav-link>
 
-                    <x-nav-link :href="route('articles.create')" :active="request()->routeIs('articles.create')">
+                    <x-nav-link :href="route('search.carte')" :active="request()->routeIs('search.carte')">
                         Recherche par département
                     </x-nav-link>
 

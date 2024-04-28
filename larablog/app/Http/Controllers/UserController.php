@@ -17,12 +17,12 @@ class UserController extends Controller
         // Passe les données à la vue
         return view('departement', ['nom' => $nom, 'delisData' => $delitsData]);
     }
-    public function create()
+    public function carte()
     {
         $delisData = Delis::all(); // Récupère toutes les données de la table "delis"
 
         // Maintenant, envoie ces données à ta vue
-        return view('articles.create')->with('delisData', $delisData);
+        return view('search.carte')->with('delisData', $delisData);
     }
     public function store(Request $request)
     {
@@ -47,7 +47,7 @@ class UserController extends Controller
         // Exemple pour ajouter des catégories à l'article en venant du formulaire
         // $article->categories()->sync($request->input('categories'));
 
-        // On redirige l'utilisateur vers la liste des articles
+        // On redirige l'utilisateur vers la liste des search
         return redirect()->route('dashboard')->with('create', 'Article créé !');
 
     }
@@ -59,12 +59,12 @@ class UserController extends Controller
         // Maintenant, récupère également les données de la table "delis"
         $delisData = Delis::all();
 
-        // Compte le nombre d'articles, tu n'as pas encore implémenté cette partie, alors je te laisse le faire
+        // Compte le nombre d'search, tu n'as pas encore implémenté cette partie, alors je te laisse le faire
         $articles = 0;
 
         // Retourne la vue avec les données nécessaires
         return view('dashboard', [
-            'articles' => $articles,
+            'search' => $articles,
             'delisData' => $delisData // Passe les données de la table "delis" à la vue
         ]);
     }
@@ -83,7 +83,7 @@ class UserController extends Controller
         }
 
         // On retourne la vue avec l'article
-        return view('articles.edit', [
+        return view('search.edit', [
             'article' => $article
         ]);
     }
@@ -98,7 +98,7 @@ class UserController extends Controller
         // On met à jour l'article
         $article->delete();
 
-        // On redirige l'utilisateur vers la liste des articles (avec un flash)
+        // On redirige l'utilisateur vers la liste des search (avec un flash)
         return redirect()->route('dashboard')->with('remove', 'Article FINITO !');
 
     }
@@ -119,7 +119,7 @@ class UserController extends Controller
         // On met à jour l'article
         $article->update($data);
 
-        // On redirige l'utilisateur vers la liste des articles (avec un flash)
+        // On redirige l'utilisateur vers la liste des search (avec un flash)
         return redirect()->route('dashboard')->with('success', 'Article mis à jour !');
     }
 

@@ -36,7 +36,7 @@ class Article extends Model
      * @var
      */
 
-	protected $table = 'articles';
+	protected $table = 'search';
 
 	protected $casts = [
 		'user_id' => 'int',

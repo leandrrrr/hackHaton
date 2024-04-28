@@ -10,12 +10,12 @@ class PublicController extends Controller
 {
     public function index(User $user)
     {
-        // On récupère les articles publiés de l'utilisateur
+        // On récupère les search publiés de l'utilisateur
         $articles = Article::where('user_id', $user->id)->where('draft', 0)->get();
 
         // On retourne la vue
         return view('public.index', [
-            'articles' => $articles,
+            'search' => $articles,
             'user' => $user
         ]);
     }
@@ -41,7 +41,7 @@ class PublicController extends Controller
         // Validation des données
         $validatedData = $request->validate([
             'commentaire' => 'required|string',
-            'articleId' => 'required|integer|exists:articles,id'
+            'articleId' => 'required|integer|exists:search,id'
         ]);
 
         // Création du commentaire dans la base de données
@@ -52,6 +52,6 @@ class PublicController extends Controller
         ]);
 
         // Redirection vers la page de l'article commenté
-        return redirect()->route('articles.show', ['id' => $articleId]);
+        return redirect()->route('search.show', ['id' => $articleId]);
     }
 }

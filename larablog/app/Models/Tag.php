@@ -12,13 +12,13 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Tag
- * 
+ *
  * @property int $id
  * @property string $name
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * 
- * @property Collection|Article[] $articles
+ *
+ * @property Collection|Article[] $search
  *
  * @package App\Models
  */
