@@ -1,10 +1,11 @@
 <x-app-layout>
-    <x-slot name="header">
-        <!-- En-tête de la page -->
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Recherche par département
-        </h2>
-    </x-slot>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <p class="title">
+                Recherche par département
+            </p>
+        </div>
+    </section>
     <head>
         <!-- Métadonnées de la page -->
         <meta charset="UTF-8">

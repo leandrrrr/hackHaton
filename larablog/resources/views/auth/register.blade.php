@@ -1,4 +1,6 @@
 <x-guest-layout>
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" rel="stylesheet">
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
