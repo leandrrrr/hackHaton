@@ -37,9 +37,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/search/carte', [UserController::class, 'carte'])->name('search.carte');
     Route::post('/search/store', [UserController::class, 'store'])->name('search.store');
     Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
-    Route::get('/search/{article}/edit', [UserController::class, 'edit'])->name('search.edit');
-    Route::post('/search/{article}/update', [UserController::class, 'update'])->name('search.update');
-    Route::get('/search/{article}/remove', [UserController::class, 'remove'])->name('search.remove');
     Route::get('/departement/{departement}', [UserController::class, 'afficherDepartement'])->name('departement');
 
 
